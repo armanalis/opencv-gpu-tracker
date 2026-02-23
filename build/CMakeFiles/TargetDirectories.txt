@@ -1,0 +1,3 @@
+/Users/alidai/Desktop/opencv-gpu-tracker/build/CMakeFiles/tracker.dir
+/Users/alidai/Desktop/opencv-gpu-tracker/build/CMakeFiles/edit_cache.dir
+/Users/alidai/Desktop/opencv-gpu-tracker/build/CMakeFiles/rebuild_cache.dir
