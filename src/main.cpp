@@ -11,10 +11,7 @@ int main(){
         return -1;
     }
 
-    cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE(3.0, cv::Size(8, 8));
-
-    cv::namedWindow("Video", cv::WINDOW_NORMAL);
-    cv::UMat frame, grayFrame, enhancedFrame;
+    cv::UMat frame, hsvFrame, mask;
 
     while(true){
 
@@ -32,15 +29,27 @@ int main(){
             break;
         }
 
-        //changing to gray tone
-        cv::cvtColor(frame, grayFrame, cv::COLOR_BGR2GRAY);
+        //convert original BGR fram to HSV(Hue, Saturation, Value)
+        cv::cvtColor(frame, hsvFrame, cv::COLOR_BGR2HSV);
 
-        //usage of CLAHE
-        clahe->apply(grayFrame, enhancedFrame);
+        //we are keeping the boundaries for the black objects
+        cv::Scalar lower_black(0, 0, 0);
+        cv::Scalar upper_black(180, 255, 100);
+
+        //Masking process only black frames will survive.
+        cv::inRange(hsvFrame, lower_black, upper_black, mask);
+
+        //Cleaning the noise.
+        /*
+        cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(5, 5));
+
+        cv::erode(mask, mask, kernel);//erase some shadows
+        cv::dilate(mask, mask, kernel);//restore the size of the actual target
+        */
 
         //Show the original and processed image side by side
         cv::imshow("Original IHA cam", frame);
-        cv::imshow("T-API Enchanced Frame (CLAHE)", enhancedFrame);
+        cv::imshow("Black cam", mask);
 
         int key = cv::waitKey(1);
 
