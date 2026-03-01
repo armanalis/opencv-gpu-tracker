@@ -13,10 +13,10 @@ private:
 public:
     UavTracker(); // Constructor
     
-    // Hedefi ilk kez bulduğumuzda CSRT ve Kalman'ı başlatır
+    // Initializes CSRT and Kalman when the target is found for the first time
     void initTracker(const cv::Mat& frame, cv::Rect initialBox);
     
-    // Her karede hedefi takip eder ve Kalman tahminini günceller
+    // Tracks the target in each frame and updates the Kalman prediction
     bool updateTracker(const cv::Mat& frame, cv::Rect& outputBox, cv::Point& kalmanPoint);
     
     bool getStatus() const { return isTracking; }

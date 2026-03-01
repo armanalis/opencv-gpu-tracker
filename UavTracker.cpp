@@ -4,7 +4,7 @@ UavTracker::UavTracker() {
     isTracking = false;
     lostFrames = 0;
     
-    // Kalman Filtresi Başlatma (4 Durum: x, y, vx, vy | 2 Ölçüm: x, y)
+    // Initialize Kalman Filter (4 States: x, y, vx, vy | 2 Measurements: x, y)
     KF.init(4, 2, 0);
     KF.transitionMatrix = (cv::Mat_<float>(4, 4) << 
         1, 0, 1, 0,  
@@ -13,18 +13,18 @@ UavTracker::UavTracker() {
         0, 0, 0, 1);
     
     cv::setIdentity(KF.measurementMatrix);
-    cv::setIdentity(KF.processNoiseCov, cv::Scalar::all(1e-2)); // Çevik bir Kalman
+    cv::setIdentity(KF.processNoiseCov, cv::Scalar::all(1e-2)); // Agile Kalman setup
     cv::setIdentity(KF.measurementNoiseCov, cv::Scalar::all(1e-1));
     cv::setIdentity(KF.errorCovPost, cv::Scalar::all(.1));
 }
 
 void UavTracker::initTracker(const cv::Mat& frame, cv::Rect initialBox) {
-    // 1. CSRT Tracker'ı başlat (Doku ve şekil takibi yapar, ışığa çok dirençlidir)
-    // Eğer Mac'inde CSRT hata verirse cv::TrackerKCF::create() kullanabilirsin.
+    // 1. Initialize CSRT Tracker (Tracks texture and shape, highly resistant to illumination)
+    // Note: If CSRT fails on Mac, cv::TrackerKCF::create() can be used as an alternative.
     tracker = cv::TrackerCSRT::create(); 
     tracker->init(frame, initialBox);
 
-    // 2. Kalman Filtresinin ilk konumunu ayarla
+    // 2. Set the initial position for the Kalman Filter
     int center_x = initialBox.x + initialBox.width / 2;
     int center_y = initialBox.y + initialBox.height / 2;
     
@@ -37,25 +37,25 @@ void UavTracker::initTracker(const cv::Mat& frame, cv::Rect initialBox) {
     
     isTracking = true;
     lostFrames = 0;
-    std::cout << "[SISTEM] Hedefe Kilitlenildi. CSRT Tracker Devrede!" << std::endl;
+    std::cout << "[SYSTEM] Target Locked. CSRT Tracker Activated!" << std::endl;
 }
 
 bool UavTracker::updateTracker(const cv::Mat& frame, cv::Rect& outputBox, cv::Point& kalmanPoint) {
     if (!isTracking) return false;
 
-    // 1. Kalman Tahmini (Predict)
+    // 1. Kalman Prediction Phase
     cv::Mat prediction = KF.predict();
     kalmanPoint = cv::Point(prediction.at<float>(0), prediction.at<float>(1));
 
-    // 2. CSRT Sensör Güncellemesi
+    // 2. CSRT Sensor Update Phase
     bool ok = tracker->update(frame, outputBox);
 
     if (ok) {
-        lostFrames = 0; // Hedef güvende
+        lostFrames = 0; // Target is secured
         int center_x = outputBox.x + outputBox.width / 2;
         int center_y = outputBox.y + outputBox.height / 2;
 
-        // Kalman'ı gerçek sensör verisiyle düzelt (Correct)
+        // Correct Kalman with real sensor data
         cv::Mat measurement = cv::Mat::zeros(2, 1, CV_32F);
         measurement.at<float>(0) = center_x;
         measurement.at<float>(1) = center_y;
@@ -63,7 +63,7 @@ bool UavTracker::updateTracker(const cv::Mat& frame, cv::Rect& outputBox, cv::Po
         return true;
     } else {
         lostFrames++;
-        // 30 kare (1 saniye) boyunca CSRT hedefi kaybederse sistemi sıfırla
+        // Reset system if CSRT loses the target for 30 consecutive frames (approx. 1 sec)
         if (lostFrames > 30) {
             reset();
         }
@@ -74,5 +74,5 @@ bool UavTracker::updateTracker(const cv::Mat& frame, cv::Rect& outputBox, cv::Po
 void UavTracker::reset() {
     isTracking = false;
     lostFrames = 0;
-    std::cout << "[SISTEM] Hedef Kaybedildi! Arama Moduna Donuluyor..." << std::endl;
+    std::cout << "[SYSTEM] Target Lost! Returning to Global Search Mode..." << std::endl;
 }
