@@ -25,8 +25,11 @@ void UavTracker::initTracker(const cv::Mat& frame, cv::Rect initialBox) {
     tracker->init(frame, initialBox);
 
     // 2. Set the initial position for the Kalman Filter
-    int center_x = initialBox.x + initialBox.width / 2;
-    int center_y = initialBox.y + initialBox.height / 2;
+    int center_x = initialBox.x + initialBox.width / 2;//our box starts from the leftmost point
+    //and we want the center of x's so we add half of the width
+
+    int center_y = initialBox.y + initialBox.height / 2;//our box starts from the topmost point
+    //and we want the center of y's so we add half of the height
     
     KF.statePre.at<float>(0) = center_x;
     KF.statePre.at<float>(1) = center_y;

@@ -22,7 +22,7 @@ int main() {
             
             cv::inRange(hsvFrame, lower_black, upper_black, mask);
             
-            cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(7, 7));
+            cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(5, 5));
             cv::erode(mask, mask, kernel);
             cv::dilate(mask, mask, kernel);
 
