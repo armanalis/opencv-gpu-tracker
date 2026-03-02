@@ -54,6 +54,15 @@ bool UavTracker::updateTracker(const cv::Mat& frame, cv::Rect& outputBox, cv::Po
     bool ok = tracker->update(frame, outputBox);
 
     if (ok) {
+        // --- ANTI-COLLAPSE GUARD ---
+        // If the bounding box shrinks to an impossibly small size, CSRT has failed (Scale Drift)!
+        // We force a reset if width/height is less than 30 pixels or area is too small.
+        if (outputBox.width < 30 || outputBox.height < 30 || outputBox.area() < 1000) {
+            std::cout << "[WARNING] Bounding box collapsed! Forcing reset..." << std::endl;
+            reset();
+            return false; // Force failure to go back to global search
+        }
+
         lostFrames = 0; // Target is secured
         int center_x = outputBox.x + outputBox.width / 2;
         int center_y = outputBox.y + outputBox.height / 2;

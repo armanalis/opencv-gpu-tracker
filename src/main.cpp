@@ -34,7 +34,8 @@ int main() {
 
             for(size_t i = 0; i < contours.size(); i++){
                 double area = cv::contourArea(contours[i]);
-                if(area > 6000 && area < 15000) { // Strict area boundaries to detect the initial camera
+                // Relaxed the minimum area constraint from 6000 to 4000 for better re-detection
+                if(area > 4000 && area < 15000) { 
                     if (area > maxArea) {
                         maxArea = area;
                         maxAreaIDx = i;
