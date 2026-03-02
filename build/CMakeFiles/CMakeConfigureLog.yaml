@@ -1666,3 +1666,42 @@ events:
         - "/Network/Library/Frameworks"
         - "/System/Library/Frameworks"
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/FindThreads.cmake:160 (check_c_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/FindThreads.cmake:226 (_threads_check_libc)"
+      - "CMakeLists.txt:8 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/Users/alidai/Desktop/opencv-gpu-tracker/build/CMakeFiles/CMakeScratch/TryCompile-J9Dt63"
+      binary: "/Users/alidai/Desktop/opencv-gpu-tracker/build/CMakeFiles/CMakeScratch/TryCompile-J9Dt63"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: ""
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/alidai/Desktop/opencv-gpu-tracker/build/CMakeFiles/CMakeScratch/TryCompile-J9Dt63'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_35fed/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_35fed.dir/build.make CMakeFiles/cmTC_35fed.dir/build
+        Building C object CMakeFiles/cmTC_35fed.dir/src.c.o
+        /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD  -arch arm64 -MD -MT CMakeFiles/cmTC_35fed.dir/src.c.o -MF CMakeFiles/cmTC_35fed.dir/src.c.o.d -o CMakeFiles/cmTC_35fed.dir/src.c.o -c /Users/alidai/Desktop/opencv-gpu-tracker/build/CMakeFiles/CMakeScratch/TryCompile-J9Dt63/src.c
+        Linking C executable cmTC_35fed
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_35fed.dir/link.txt --verbose=1
+        /usr/bin/cc  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_35fed.dir/src.c.o -o cmTC_35fed
+        
+      exitCode: 0
+...
