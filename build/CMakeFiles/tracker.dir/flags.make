@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /opt/homebrew/Cellar/opencv/4.13.0_3/include/opencv4
+CXX_INCLUDES = -I/Users/alidai/Desktop/opencv-gpu-tracker/src -isystem /opt/homebrew/Cellar/opencv/4.13.0_3/include/opencv4
 
 CXX_FLAGSarm64 = -std=gnu++17 -arch arm64
 

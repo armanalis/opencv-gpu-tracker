@@ -1,5 +1,6 @@
-CMakeFiles/tracker.dir/src/main.cpp.o: \
-  /Users/alidai/Desktop/opencv-gpu-tracker/src/main.cpp \
+CMakeFiles/tracker.dir/src/UavTracker.cpp.o: \
+  /Users/alidai/Desktop/opencv-gpu-tracker/src/UavTracker.cpp \
+  /Users/alidai/Desktop/opencv-gpu-tracker/src/UavTracker.hpp \
   /opt/homebrew/Cellar/opencv/4.13.0_3/include/opencv4/opencv2/opencv.hpp \
   /opt/homebrew/Cellar/opencv/4.13.0_3/include/opencv4/opencv2/opencv_modules.hpp \
   /opt/homebrew/Cellar/opencv/4.13.0_3/include/opencv4/opencv2/core.hpp \
@@ -920,6 +921,4 @@ CMakeFiles/tracker.dir/src/main.cpp.o: \
   /opt/homebrew/Cellar/opencv/4.13.0_3/include/opencv4/opencv2/stitching/detail/blenders.hpp \
   /opt/homebrew/Cellar/opencv/4.13.0_3/include/opencv4/opencv2/video.hpp \
   /opt/homebrew/Cellar/opencv/4.13.0_3/include/opencv4/opencv2/video/tracking.hpp \
-  /opt/homebrew/Cellar/opencv/4.13.0_3/include/opencv4/opencv2/video/background_segm.hpp \
-  /Users/alidai/Desktop/opencv-gpu-tracker/src/UavTracker.hpp \
-  /Users/alidai/Desktop/opencv-gpu-tracker/src/Telemetry.hpp
+  /opt/homebrew/Cellar/opencv/4.13.0_3/include/opencv4/opencv2/video/background_segm.hpp

@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/tracker.dir/src/UavTracker.cpp.o"
+  "CMakeFiles/tracker.dir/src/UavTracker.cpp.o.d"
   "CMakeFiles/tracker.dir/src/main.cpp.o"
   "CMakeFiles/tracker.dir/src/main.cpp.o.d"
   "tracker"

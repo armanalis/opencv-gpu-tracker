@@ -129,6 +129,30 @@ tracker/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tracker.dir/build.make CMakeFiles/tracker.dir/build
 .PHONY : tracker/fast
 
+src/UavTracker.o: src/UavTracker.cpp.o
+.PHONY : src/UavTracker.o
+
+# target to build an object file
+src/UavTracker.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tracker.dir/build.make CMakeFiles/tracker.dir/src/UavTracker.cpp.o
+.PHONY : src/UavTracker.cpp.o
+
+src/UavTracker.i: src/UavTracker.cpp.i
+.PHONY : src/UavTracker.i
+
+# target to preprocess a source file
+src/UavTracker.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tracker.dir/build.make CMakeFiles/tracker.dir/src/UavTracker.cpp.i
+.PHONY : src/UavTracker.cpp.i
+
+src/UavTracker.s: src/UavTracker.cpp.s
+.PHONY : src/UavTracker.s
+
+# target to generate assembly for a file
+src/UavTracker.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tracker.dir/build.make CMakeFiles/tracker.dir/src/UavTracker.cpp.s
+.PHONY : src/UavTracker.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... tracker"
+	@echo "... src/UavTracker.o"
+	@echo "... src/UavTracker.i"
+	@echo "... src/UavTracker.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

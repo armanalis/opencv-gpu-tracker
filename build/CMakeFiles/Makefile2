@@ -85,12 +85,12 @@ clean: CMakeFiles/tracker.dir/clean
 CMakeFiles/tracker.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tracker.dir/build.make CMakeFiles/tracker.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tracker.dir/build.make CMakeFiles/tracker.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/alidai/Desktop/opencv-gpu-tracker/build/CMakeFiles --progress-num=1,2 "Built target tracker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/alidai/Desktop/opencv-gpu-tracker/build/CMakeFiles --progress-num=1,2,3 "Built target tracker"
 .PHONY : CMakeFiles/tracker.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tracker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alidai/Desktop/opencv-gpu-tracker/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alidai/Desktop/opencv-gpu-tracker/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/tracker.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alidai/Desktop/opencv-gpu-tracker/build/CMakeFiles 0
 .PHONY : CMakeFiles/tracker.dir/rule
@@ -102,7 +102,7 @@ tracker: CMakeFiles/tracker.dir/rule
 # codegen rule for target.
 CMakeFiles/tracker.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tracker.dir/build.make CMakeFiles/tracker.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/alidai/Desktop/opencv-gpu-tracker/build/CMakeFiles --progress-num=1,2 "Finished codegen for target tracker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/alidai/Desktop/opencv-gpu-tracker/build/CMakeFiles --progress-num=1,2,3 "Finished codegen for target tracker"
 .PHONY : CMakeFiles/tracker.dir/codegen
 
 # clean rule for target.

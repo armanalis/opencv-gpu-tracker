@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/alidai/Desktop/opencv-gpu-tracker/src/UavTracker.cpp" "CMakeFiles/tracker.dir/src/UavTracker.cpp.o" "gcc" "CMakeFiles/tracker.dir/src/UavTracker.cpp.o.d"
   "/Users/alidai/Desktop/opencv-gpu-tracker/src/main.cpp" "CMakeFiles/tracker.dir/src/main.cpp.o" "gcc" "CMakeFiles/tracker.dir/src/main.cpp.o.d"
   )
 
