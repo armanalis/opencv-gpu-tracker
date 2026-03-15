@@ -41,7 +41,7 @@ int main(){
 
         cv::cvtColor(enhancedFrame, hsvFrame, cv::COLOR_BGR2HSV);
         cv::Scalar lower_black(0, 0, 0);
-        cv::Scalar upper_black(180, 255, 60);
+        cv::Scalar upper_black(180, 255, 100);
         cv::inRange(hsvFrame, lower_black, upper_black, mask);
 
         cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(5, 5));

@@ -67,7 +67,7 @@ bool UavTracker::updateTracker(const cv::Mat& mask, cv::Point& outKalmanPt, cv::
                 double dist = cv::norm(cv::Point(temp_center_x, temp_center_y) - outKalmanPt);
                 
                 // Prioritize the contour closest to the Kalman prediction
-                if (dist < 150 && dist < minDistance) {
+                if (dist < 50 && dist < minDistance) {
                     minDistance = dist;
                     maxAreaIDx = (int)i; 
                 }
