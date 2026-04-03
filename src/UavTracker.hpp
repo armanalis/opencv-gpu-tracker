@@ -10,12 +10,11 @@ private:
     int lostFrames;
 
 public:
-    UavTracker(); // Constructor
+    UavTracker();
     
-    // Takes the binary mask, updates Kalman, and returns true if target is locked.
-    // Outputs the predicted Kalman point and the actual Sensor bounding box.
-    bool updateTracker(const cv::Mat& mask, cv::Point& outKalmanPt, cv::Rect& outSensorBox);
+    // Evaluates YOLO detections, associates the best target via Euclidean distance,
+    // updates the Kalman Filter, and outputs the prediction and matched sensor box.
+    bool updateTracker(const std::vector<cv::Rect>& detections, cv::Point& outKalmanPt, cv::Rect& outSensorBox);
     
-    // Returns the current status of the tracking system
     bool getStatus() const;
 };
